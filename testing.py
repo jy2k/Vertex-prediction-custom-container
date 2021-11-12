@@ -41,24 +41,22 @@ def predict_custom_trained_model_sample(
         project=project, location=location, endpoint=endpoint_id
     )
     #https://googleapis.dev/python/aiplatform/latest/aiplatform_v1beta1/prediction_service.html
-    response = client.raw_predict(
+    response = client.predict(
         endpoint=endpoint, instances=instances, parameters=parameters
     )
     print("response")
     print(" deployed_model_id:", response.deployed_model_id)
     # The predictions are a google.protobuf.Value representation of the model's predictions.
     predictions = response.predictions
-    for prediction in predictions:
-        print(" prediction:", dict(prediction))
+    print(predictions)
+#    for prediction in predictions:
+#        print(" prediction:", dict(prediction))
 
 if __name__ == "__main__":
-    INSTANCE =  { "instances": [
-    [{"message": "sdfasdfsadf"}],
-    [{"message": "sdfasdfsadf"}]
-  ]}
+    INSTANCE ='{"instances":[["sfdsfasfsadf"], ["sfdsfasfsadf"]]}'
     predict_custom_trained_model_sample(
         project="141610882258",
-        endpoint_id="241092113645699072",
+        endpoint_id="2394938635435638784",
         location="us-central1",
         instance_dict=INSTANCE
     )

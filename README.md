@@ -8,7 +8,7 @@ Steps to take
 4.1 tag & push docker image from step #2 to an Artifact Repository in a project of your choice.
 4.2 Import (called upload) container from Artifact Repository into Vertex Model registry.
 4.3 From Model registry deploy the model to an Endpoint.
-5. Test the model by going back to the Model registry and using the UI.
+5. Test the model by going back to the Model registry and using the UI in Model registry or testing.py script.
 
 Step 1. + 2. + 3.
 docker build -t testimage .
@@ -42,6 +42,8 @@ For testing after deploying in the cloud through the UI:
 
 # Addtional info
 ## Requirements for the container
+https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements
+
 Specifically, the container must listen and respond to liveness checks,
 health checks, and prediction requests.
 
