@@ -22,23 +22,22 @@ docker push us-central1-docker.pkg.dev/kubeflow-demos/repo-models/container_mode
 Step 4.2
 gcloud beta ai models upload \
   --region=us-central1 \
-  --display-name=fast-test4 \
+  --display-name=fast-test-10 \
   --container-image-uri=us-central1-docker.pkg.dev/kubeflow-demos/repo-models/container_model_test \
   --container-ports=8080 \
-  --container-health-route=/health_check \
-  --container-predict-route=/test2
+  --container-health-route=/health_check
 
 5.
 For local testing use:
   curl -X 'POST' \
-  'http://localhost:8080/test2' \
+  'http://localhost:8080/predict' \
   -H 'Content-Type: application/json' \
   -d '{"instances":[["sfdsfasfsadf"], ["sfdsfasfsadf"]]}'
 
 For testing after deploying in the cloud through the UI:
 {"instances":[["sfdsfasfsadf"], ["sfdsfasfsadf"]]}
 
-
+![Screenshot](test-ui.png)
 
 # Addtional info
 ## Requirements for the container
