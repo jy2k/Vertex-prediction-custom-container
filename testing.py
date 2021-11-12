@@ -42,7 +42,7 @@ def predict_custom_trained_model_sample(
     )
     #https://googleapis.dev/python/aiplatform/latest/aiplatform_v1beta1/prediction_service.html
     response = client.raw_predict(
-        endpoint=endpoint, http_body=instances, parameters=parameters
+        endpoint=endpoint, instances=instances, parameters=parameters
     )
     print("response")
     print(" deployed_model_id:", response.deployed_model_id)

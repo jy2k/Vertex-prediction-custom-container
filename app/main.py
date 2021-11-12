@@ -48,16 +48,23 @@ async def test(m: Message):
     return classify_message(model, m.message)
 
 from fastapi import Request, FastAPI
+import pandas as pd
+
 @app.post('/test2')
 async def test2(request: Request):
+    print("----------------- TESTING -----------------")
+    print (type(request))
     body = await request.json()
-    print('body')
+    print (type(body))
     print (body)
     instances = body["instances"]
-    print('instances')
-    print (instances)
+    column_headers = ['message']
+    inputs = pd.DataFrame(instances, columns=column_headers)
+    outputs = model.predict(inputs)
+    print("outputs")
+    print(outputs.tolist())
 
-    return model.predict([instances])
+    return {"predictions": outputs.tolist()}
 
 @app.post('/predict/{message}')
 async def detect_spam_path(message: str):

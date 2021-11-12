@@ -5,7 +5,7 @@ COPY ./app /app
 
 WORKDIR /app
 
-RUN pip install sklearn joblib
+RUN pip install sklearn joblib pandas
 
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
 
